@@ -17,11 +17,10 @@ function getLivroPorId(id) {
 function inserirLivro(livroNovo) {
   try {
     let livros = JSON.parse(fs.readFileSync("livros.json", "utf-8"));
-    const novaListaDeLivros = [...livros, livroNovo];
-    console.log(novaListaDeLivros);
-    return fs.writeFileSync("livros.json", JSON.stringify(novaListaDeLivros));
+    livros.push(livroNovo);
+    fs.writeFileSync("livros.json", JSON.stringify(livros));
   } catch (err) {
-    console.log(err);
+    res.status(500).send({ error: err.message });
   }
 }
 
