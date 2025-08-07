@@ -1,4 +1,8 @@
-import { getLivroPorId, getTodosLivros } from "../serviços/livro.servicos.js";
+import {
+  getLivroPorId,
+  getTodosLivros,
+  inserirLivro,
+} from "../serviços/livro.servicos.js";
 
 function getLivros(req, res) {
   try {
@@ -18,4 +22,14 @@ function getLivroId(req, res) {
   }
 }
 
-export { getLivros, getLivroId };
+function postLivro(req, res) {
+  try {
+    const livroNovo = req.body;
+    inserirLivro(livroNovo);
+    res.status(201).send("livro inserido com sucesso");
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+}
+
+export { getLivros, getLivroId, postLivro };
