@@ -1,10 +1,1 @@
-[
-  { "id": 1, "nome": "livro irado" },
-  { "id": 2, "nome": "livro irado mais irado" },
-  { "id": 3, "nome": "livro novo" },
-  {
-    "id": 4,
-    "nome": "livro irado mais irado que o primeiro e menos que o segundo"
-  },
-  { "id": 5, "nome": "livro de programação" }
-]
+[{"id":1,"nome":"livro bacana"},{"id":2,"nome":"livro irado legalzinho"},{"id":3,"nome":"livro novo"},{"id":4,"nome":"livro irado mais irado que o primeiro e menos que o segundo"},{"id":5,"nome":"livro de programação"}]

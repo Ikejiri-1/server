@@ -2,6 +2,7 @@ import {
   getLivroPorId,
   getTodosLivros,
   inserirLivro,
+  modificarLivro,
 } from "../serviços/livro.servicos.js";
 
 function getLivros(req, res) {
@@ -32,4 +33,14 @@ function postLivro(req, res) {
   }
 }
 
-export { getLivros, getLivroId, postLivro };
+function patchLivro(req, res) {
+  try {
+    const id = req.params.id;
+    const body = req.body;
+    modificarLivro(body, id);
+    res.send("livro modificado com sucesso");
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+}
+export { getLivros, getLivroId, postLivro, patchLivro };

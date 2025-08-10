@@ -23,5 +23,17 @@ function inserirLivro(livroNovo) {
     res.status(500).send({ error: err.message });
   }
 }
+function modificarLivro(modificacoes, id) {
+  let livrosAtuais = JSON.parse(fs.readFileSync("livros.json", "utf-8"));
+  const acharIndice = livrosAtuais.findIndex(
+    (livro) => livro.id === Number(id)
+  );
+  const conteudoModificado = {
+    ...livrosAtuais[acharIndice],
+    ...modificacoes,
+  };
+  livrosAtuais[acharIndice] = conteudoModificado;
+  fs.writeFileSync("livros.json", JSON.stringify(livrosAtuais));
+}
 
-export { getTodosLivros, getLivroPorId, inserirLivro };
+export { getTodosLivros, getLivroPorId, inserirLivro, modificarLivro };
