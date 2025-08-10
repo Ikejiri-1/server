@@ -34,8 +34,12 @@ function getLivroId(req, res) {
 function postLivro(req, res) {
   try {
     const livroNovo = req.body;
-    inserirLivro(livroNovo);
-    res.status(201).send("livro inserido com sucesso");
+    if (req.body.nome) {
+      inserirLivro(livroNovo);
+      res.status(201).send("livro inserido com sucesso");
+    } else {
+      res.status(422).send({ error: "O campo nomme é obrigatório" });
+    }
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
