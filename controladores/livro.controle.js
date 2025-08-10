@@ -3,6 +3,7 @@ import {
   getTodosLivros,
   inserirLivro,
   modificarLivro,
+  deletaLivroPorId,
 } from "../serviços/livro.servicos.js";
 
 function getLivros(req, res) {
@@ -43,4 +44,14 @@ function patchLivro(req, res) {
     res.status(500).send({ error: err.message });
   }
 }
-export { getLivros, getLivroId, postLivro, patchLivro };
+function deleteLivro(req, res) {
+  try {
+    const id = req.params.id;
+    deletaLivroPorId(id);
+    res.send("livro deletado com sucesso");
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+}
+
+export { getLivros, getLivroId, postLivro, patchLivro, deleteLivro };
