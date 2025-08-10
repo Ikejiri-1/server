@@ -17,8 +17,15 @@ function getLivros(req, res) {
 function getLivroId(req, res) {
   try {
     const id = req.params.id;
-    const livro = getLivroPorId(id);
-    res.send(livro);
+
+    if (id && Number(id)) {
+      const livro = getLivroPorId(id);
+      res.send(livro);
+    } else {
+      res
+        .status(422)
+        .send({ error: "ID inválido, dado não condiz com o esperado" });
+    }
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
@@ -37,9 +44,15 @@ function postLivro(req, res) {
 function patchLivro(req, res) {
   try {
     const id = req.params.id;
-    const body = req.body;
-    modificarLivro(body, id);
-    res.send("livro modificado com sucesso");
+    if (id && Number(id)) {
+      const body = req.body;
+      modificarLivro(body, id);
+      res.send("livro modificado com sucesso");
+    } else {
+      res
+        .status(422)
+        .send({ error: "ID inválido, dado não condiz com o esperado" });
+    }
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
@@ -47,8 +60,14 @@ function patchLivro(req, res) {
 function deleteLivro(req, res) {
   try {
     const id = req.params.id;
-    deletaLivroPorId(id);
-    res.send("livro deletado com sucesso");
+    if (id && Number(id)) {
+      deletaLivroPorId(id);
+      res.send("livro deletado com sucesso");
+    } else {
+      res
+        .status(422)
+        .send({ error: "ID inválido, dado não condiz com o esperado" });
+    }
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
