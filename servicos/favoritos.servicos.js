@@ -10,7 +10,7 @@ function deletaFavoritoPorId(id) {
   fs.writeFileSync("favoritos.json", JSON.stringify(livrosFiltrados));
 }
 
-function postFavorito(id) {
+function inserirFavorito(id) {
   try {
     let livros = JSON.parse(fs.readFileSync("livros.json", "utf-8"));
     let favoritos = JSON.parse(fs.readFileSync("favoritos.json", "utf-8"));
@@ -26,4 +26,4 @@ function postFavorito(id) {
   }
 }
 
-export { getTodosFavoritos, deletaFavoritoPorId, postFavorito };
+export { getTodosFavoritos, deletaFavoritoPorId, inserirFavorito };

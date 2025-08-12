@@ -4,7 +4,7 @@ import {
   inserirLivro,
   modificarLivro,
   deletaLivroPorId,
-} from "../serviços/livro.servicos.js";
+} from "../servicos/livro.servicos.js";
 
 function getLivros(req, res) {
   try {
